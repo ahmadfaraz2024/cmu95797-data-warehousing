@@ -1,0 +1,7 @@
+git tag week-1-start
+.read sql/ingest.sql 
+.tables
+duckdb main.db
+duckdb main.db< sql/dump_raw_schemas.sql > answers/raw_schemas.txt
+python scripts/dump_raw_counts.py > answers/raw_counts.txt 
+git tag week-1-end
