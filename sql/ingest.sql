@@ -5,7 +5,7 @@
 create table if not exists central_park_weather as select * from './data/central_park_weather.csv';
 
 -- ingest citibike-tripdata - 
-create table if not exists bike_data as select * from './data/citibike-tripdata.csv.gz';
+create table if not exists bike_data as select * from read_csv_auto('./data/citibike-tripdata.csv.gz',union_by_name=True, filename=True, all_varchar=1);
 
 -- ingest fhv_bases - 
 create table if not exists fhv_bases as select * from './data/fhv_bases.csv';

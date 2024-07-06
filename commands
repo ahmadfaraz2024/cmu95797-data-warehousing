@@ -1,7 +1,17 @@
 git tag week-1-start
-.read sql/ingest.sql 
+duckdb main.db -s ".read sql/ingest.sql"
 .tables
 duckdb main.db
 duckdb main.db< sql/dump_raw_schemas.sql > answers/raw_schemas.txt
 python scripts/dump_raw_counts.py > answers/raw_counts.txt 
 git tag week-1-end
+
+Week 2
+
+installing dbt dependencies: dbt deps
+To generate sources: dbt run-operation generate_source --args '{"schema_name": "main", "generate_columns": true, "include_data_types": true}'   
+After copy pasting the results of generate sources in sources.yml we can see the results with dbt list
+~/stg__central_park_weather.sql copy from sql to staging folders
+cp ~/stg__central_park_weather.sql models/staging
+
+dbtrun in transit folder to create sqlview

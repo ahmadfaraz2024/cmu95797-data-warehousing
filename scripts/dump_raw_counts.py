@@ -1,6 +1,6 @@
 import duckdb
 # Path to the DuckDB database
-database_path = '../main.db'
+database_path = '../nyc_transit.db'
 
 # Connect to DuckDB database
 try:
