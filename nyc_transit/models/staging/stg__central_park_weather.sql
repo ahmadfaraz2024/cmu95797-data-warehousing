@@ -1,19 +1,16 @@
 with source as (
 select * from {{ source( 'main','central_park_weather') }}
 ),
-
 renamed as (
-
-
 select station,
 name,
 date::date as date, 
 awnd::double as awnd, 
-prcp: :double as prcp, 
+prcp::double as prcp, 
 snow:: double as snow, 
-smwd: :double as snwd, 
+snwd::double as snwd, 
 tmax::int as tmax,
-tmin:int as tmin, 
+tmin::int as tmin, 
 filename
 from source
 )

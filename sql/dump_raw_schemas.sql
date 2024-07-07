@@ -13,3 +13,12 @@ describe fhvhv_tripdata;
 describe green_tripdata;
 describe yellow_tripdata;
 describe taxi_zones;
+
+-- views in week 2
+describe main_staging.stg__fhv_bases;
+describe main_staging.stg__fhv_tripdata;       
+describe main_staging.stg__fhvhv_tripdata;    
+describe main_staging.stg__green_tripdata;    
+describe main_staging.stg__yellow_tripdata;              
+describe main_staging.stg__bike_data;                  
+describe main_staging.stg__central_park_weather;

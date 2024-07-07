@@ -82,6 +82,8 @@ sources:
             data_type: BIGINT
           - name: tmin
             data_type: BIGINT
+          - name: filename
+            data_type: CHARACTER VARYING(256)
 
       - name: fhv_bases
         columns:
@@ -92,6 +94,8 @@ sources:
           - name: dba
             data_type: CHARACTER VARYING(256)
           - name: dba_category
+            data_type: CHARACTER VARYING(256)
+          - name: filename
             data_type: CHARACTER VARYING(256)
 
       - name: fhv_tripdata
@@ -270,3 +274,4 @@ sources:
             data_type: DOUBLE
           - name: filename
             data_type: CHARACTER VARYING(256)
+

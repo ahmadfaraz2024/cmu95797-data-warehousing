@@ -1,10 +1,8 @@
 with source as (
-
-    select * from {{ source('main', 'bike_data') }}
-
+    select * 
+    from {{ source('main', 'bike_data') }}
 ),
 renamed as (
-
     select
         tripduration,
         starttime,
@@ -35,22 +33,25 @@ renamed as (
         end_lng,
         member_casual,
         filename
-
     from source
-
 )
-
 select
-	coalesce(starttime, started_at)::timestamp as started_at_ts,
-	coalesce(stoptime, ended_at)::timestamp as ended_at_ts,
-	coalesce(tripduration::int,datediff('second', started_at_ts, ended_at_ts)) tripduration,
-	coalesce("start station id", start_station_id) as start_station_id,  
-	coalesce("start station name", start_station_name) as start_station_name,
-	coalesce("start station latitude", start_lat)::double as start_lat,
-	coalesce("start station longitude", start_lng)::double as start_lng, 
-	coalesce("end station id", end_station_id) as end_station_id,  
-	coalesce("end station name", end_station_name) as end_station_name,
-	coalesce("end station latitude", end_lat)::double as end_lat,
-	coalesce("end station longitude", end_lng)::double as end_lng,
-	filename
+    -- Convert start and end times to timestamp and coalesce for consistency
+    coalesce(starttime, started_at)::timestamp as started_at_ts,
+    coalesce(stoptime, ended_at)::timestamp as ended_at_ts,
+
+    -- Calculate trip duration if not already present
+    coalesce(tripduration::int, datediff('second', started_at_ts, ended_at_ts)) as tripduration,
+    
+    -- Coalescing the start and end station details for consistency
+    coalesce("start station id", start_station_id) as start_station_id,  
+    coalesce("start station name", start_station_name) as start_station_name,
+    coalesce("start station latitude", start_lat)::double precision as start_lat,
+    coalesce("start station longitude", start_lng)::double precision as start_lng,
+    
+    coalesce("end station id", end_station_id) as end_station_id,  
+    coalesce("end station name", end_station_name) as end_station_name,
+    coalesce("end station latitude", end_lat)::double precision as end_lat,
+    coalesce("end station longitude", end_lng)::double precision as end_lng,
+    filename
 from renamed

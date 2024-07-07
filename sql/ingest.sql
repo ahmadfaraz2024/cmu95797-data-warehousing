@@ -2,13 +2,13 @@
 .echo on
 
 -- ingest central_park_weather - 
-create table if not exists central_park_weather as select * from './data/central_park_weather.csv';
+create table if not exists central_park_weather as select * from read_csv_auto('./data/central_park_weather.csv', filename=True);
 
 -- ingest citibike-tripdata - 
 create table if not exists bike_data as select * from read_csv_auto('./data/citibike-tripdata.csv.gz',union_by_name=True, filename=True, all_varchar=1);
 
 -- ingest fhv_bases - 
-create table if not exists fhv_bases as select * from './data/fhv_bases.csv';
+create table if not exists fhv_bases as select * from read_csv_auto('./data/fhv_bases.csv', filename=True);
 
 -- ingest fhv_tripdata -
 create table if not exists fhv_tripdata as select * from read_parquet('./data/taxi/fhv_tripdata.parquet', union_by_name=true, filename=true);
