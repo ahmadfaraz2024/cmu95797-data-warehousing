@@ -15,3 +15,15 @@ After copy pasting the results of generate sources in sources.yml we can see the
 cp ~/stg__central_park_weather.sql models/staging
 
 dbtrun in transit folder to create sqlview
+
+Week 3
+dbt deps
+dbt run-operation generate_model_yaml --args '{"model_names": ["stg__fhv_tripdata", "stg__bike_data", "stg__fhvhv_tripdata", "stg__central_park_weather", "stg__green_tripdata""stg__fhv_bases", "stg__yellow_tripdata"]}'
+dbt run
+dbt docs generate
+dbt docs serve
+
+
+		
+	
+		
