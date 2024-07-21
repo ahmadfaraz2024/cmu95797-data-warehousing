@@ -23,7 +23,46 @@ dbt run
 dbt docs generate
 dbt docs serve
 
+Week 4
+Make all mart sql files
+dbt build in the nyc_transit folder
+dbt compile
+load up the: ls target/compiled/nyc_transit/analyses/
 
-		
+.read nyc_transit/target/compiled/nyc_transit/analyses/bike_trips_and_duration_by_weekday.sql
+┌─────────┬─────────────┬──────────────────────────┐
+│ weekday │ total_trips │ total_trip_duration_secs │
+│  int64  │    int64    │          int128          │
+├─────────┼─────────────┼──────────────────────────┤
+│       0 │      644442 │                910645349 │
+│       1 │      670119 │                770404685 │
+│       2 │      706091 │                810015883 │
+│       3 │      681487 │                746876172 │
+│       4 │      679193 │                787743492 │
+│       5 │      672774 │                786374374 │
+│       6 │      726257 │                998950748 │
+└─────────┴─────────────┴──────────────────────────┘
+
+.read nyc_transit/target/compiled/nyc_transit/analyses/inter_borough_taxi_trips_by_weekday.sql
+┌─────────┬───────────┬─────────────────────┬───────────────────────┐
+│ weekday │ all_trips │ inter_borough_trips │ percent_inter_borough │
+│  int64  │   int64   │        int64        │        double         │
+├─────────┼───────────┼─────────────────────┼───────────────────────┤
+│       0 │   5487016 │             1523013 │    0.2775667138568577 │
+│       1 │   5161242 │             1281553 │    0.2483032184888831 │
+│       2 │   5357462 │             1269999 │   0.23705235800085936 │
+│       3 │   5808019 │             1371844 │   0.23619826312551664 │
+│       4 │   5930548 │             1456974 │   0.24567274390157537 │
+│       5 │   6432312 │             1579951 │   0.24562723325609828 │
+│       6 │   6684518 │             1693902 │   0.25340675273819296 │
+└─────────┴───────────┴─────────────────────┴───────────────────────┘
+
+.read nyc_transit/target/compiled/nyc_transit/analyses/taxi_trips_ending_at_airport.sql
+┌────────────────────────┐
+│ total_trips_to_airport │
+│         int64          │
+├────────────────────────┤
+│                1062171 │
+└────────────────────────┘
 	
 		
