@@ -9,3 +9,4 @@ ON
     t.pulocationid = l.locationid  -- Join condition: matching pickup location ID from fact table to location ID in dimension table
 -- Including borough information by joining on the pickup location ID
 GROUP BY all
+

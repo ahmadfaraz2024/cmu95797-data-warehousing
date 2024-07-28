@@ -64,5 +64,7 @@ load up the: ls target/compiled/nyc_transit/analyses/
 ├────────────────────────┤
 │                1062171 │
 └────────────────────────┘
-	
+
+Week 5
+.read target/compiled/nyc_transit/analyses/whatever.sql
 		
